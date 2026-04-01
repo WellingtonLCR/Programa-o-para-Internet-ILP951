@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block titulo %}Inserir Membro{% endblock %}
+
+{% block conteudo %}
+<h1 class="h3 mb-3">Inserir Membro</h1>
+<form method="post" class="card card-body shadow-sm bg-white">
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label for="nome" class="form-label">Nome completo</label>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do membro" required>
+        </div>
+        <div class="col-md-6">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" required>
+        </div>
+        <div class="col-md-6">
+            <label for="ministerio" class="form-label">Ministério</label>
+            <select class="form-select" id="ministerio" name="ministerio" required>
+                <option value="">Selecione um Ministério</option>
+                <option>Louvor</option>
+                <option>infantil</option>
+                <option>Intercessão</option>
+                <option>Recepção</option>
+                <option>Mídia</option>
+            </select>   
+        </div>
+    </div>
+    <div class="mt-4 d-flex gap-2">
+        <button type="submit" class="btn btn-sucess">Salvar</button>
+        <a href="{{ url_for('listar_membros') }}" class="btn btn-secondary">Cancelar</a>    
+    </div>
+</form>
