@@ -99,7 +99,7 @@ def listar_usuarios():
     #Envia lista simulada para template de listagem
     return render_template('usuarios/listar.html', usuarios=USUARIOS)
 
-@app.route(/"usuarios/inserir", methods=['GET', 'POST'])
+@app.route("/usuarios/inserir", methods=['GET', 'POST'])
 @login_required
 def inserir_usuario():
     if request.method == 'POST':

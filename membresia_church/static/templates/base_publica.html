@@ -8,22 +8,43 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     </head>
 
-    <bodyclass="bg-light d-flex flex-column min-vh-100">
+    `<bodyclass="bg-light d-flex flex-column min-vh-100">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
             <div class="container">
                 <a class="navbar-brand fw-bold" href="{{ url_for('index') }}">Igreja Viva • Sistema de Membresia</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPublica"s>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPublica" s>
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navbarPublica">
                     <ulclass="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('cadastro') }}">Cadastro</a></li>
-                    </ul>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Início</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('cadastro') }}">Cadastro</a></li>
+                        </ul>
                 </div>
             </div>
         </nav>
+
+        <main class="container py-4 flex-grow-1">
+            {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+            {% for categoria, mensagem in messages %}
+            <div class="alert alert-{{ categoria }} alert-dismissible fade show" role="alert">
+                {{ mensagem }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            {% block conteudo %}{% endblock %}
+        </main>
+        <footer class="footer-publica py-3 text-center text-white mt-auto">
+            Desenvolvido por Equipe T1 • Programação para Internet ILP951
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
     </body>
 </html>
-
