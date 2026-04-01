@@ -1,0 +1,40 @@
+{extends "base.html" %}
+
+{% block titulo %}Inserir Ministério{% endblock %}
+
+{% block conteudo %}
+    <h1 class="h3 mb-3">Inserir Ministério</h1>
+
+    <form method="post" class="card card-body shadow-sm bg-white">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="nome" class="form-label">Nome do Ministério</label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex: Louvor" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="lider" class="form-label">Líder responsável</label>
+            <input type="text class=" form-control" id="lider" name="lider placeholder=" Digite o nome do lider" required">
+        </div>
+        <div class="cold-md-6">
+            <label for="dia_reuniao class=" form-label">Dia da Reunião</label>
+            <select class="form-select" id="dia_reuniao" name="dia_reuniao">
+                <option value="segunda">Segunda-feira</option>
+                <option value="terca">Terça-feira</option>
+                <option value="quarta">Quarta-feira</option>
+                <option value="quinta">Quinta-feira</option>
+                <option value="sexta">Sexta-feira</option>
+                <option value="sabado">Sábado</option>
+                <option value="domingo">Domingo</option>
+            </select>
+            <div class="cold-md-6">
+                <label for="vagas class=" form-label">Vagas disponíveis</label>
+                <input type="number" class="form-control" id="vagas" name="vagas" placeholder="0" min="0">
+            </div>
+        </div>
+        <div class="mt-4 d-flex gap-2">
+            <button type="submit" class="btn btn-success">Salvar</button>
+            <a href="{{ url_for('listar_ministerios') }}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+{% endblock %}
