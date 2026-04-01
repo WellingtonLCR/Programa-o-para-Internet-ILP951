@@ -1,0 +1,28 @@
+:root{
+    --cor-primaria: #2453a6;
+    --cor-secundaria: #1b7f5f;
+}
+
+body{
+    font font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer{
+    background-color: linear-gradiente(90deg, var(--cor-primaria), var(--cor-secundaria));
+}
+
+.footer-privada{
+    background-color: #1d2636;
+}
+
+.card {
+    border-radius: 0.9rem;
+}
+
+.btn.excluir {
+    transition: transform 0.15 ease;
+}
+
+.btn.excluir:hover {
+    transform: translate(-1px);
+}
