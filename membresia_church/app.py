@@ -43,3 +43,21 @@ app.route("/")
 def index():
     #pagina inicial (principal tela do sistema)
     return render_template('index.html')
+
+app.route("/login", methods=['GET', 'POST'])
+def login():
+    #pagina de login
+    if request.method == 'POST':
+        #logica de login
+        email = request.form.get("email", "").strip()
+        senha = request.form.get("senha", "").strip()
+
+        #validando login - Obrigatorio ter email e senha
+        if not email or not senha:
+            flash('Por favor, preencha o email e a senha.', 'danger')
+            return redirect(url_for('login'))
+        #Guarda o email do usuario logado na sessao
+            session["usuario_logado"] = email
+            flash("Login realizado com sucesso!", "success")
+            
+    return render_template('login.html')
