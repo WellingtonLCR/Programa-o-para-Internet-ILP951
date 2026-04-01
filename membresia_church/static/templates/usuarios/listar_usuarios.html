@@ -1,32 +1,33 @@
 {% extends "base.html" %}
 
-{% block titulo %}Membros{% endblock %}
+{% block titulo %}Usuários{% endblock %}
 
 {% block conteudo %}
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h1 class="h3 mb-0">Membros</h1>
-    <a href="{{ url_for('inserir_ministerio') }}" class="btn btn-primary">Novo Membro</a>
+    <h1 class="h3 mb-0">Usuários do sistema</h1>
+    <a href="{{ url_for('inserir_usuario') }}" class="btn btn-primary">Novo Usuário</a>
 </div>
+
 <div class="table-responsive">
     <table class="class=" table table-hover table-bordered bg-white"">
         <thead class="table-dark">
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th>Telefone</th>
-                <th>Ministério</th>
-                <th>Situação</th>
+                <th>E-mail</th>
+                <th>Perfil</th>
+                <th>Status</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
             {% for membro in membros %}
             <tr>
-                <td>{{ membro.id }}</td>
-                <td>{{ membro.nome }}</td>
-                <td>{{ membro.telefone }}</td>
-                <td>{{ membro.ministerio }}</td>
-                <td>{{ membro.situacao }}</td>
+                <td>{{ usuario.id }}</td>
+                <td>{{ usuario.nome }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.perfil }}</td>
+                <td>{{ usuario.status }}</td>
                 <td>
                     <button class="btn btn-sm btn-outline-secondary">Editar</button>
                     <button class="btn btn-sm btn-outline-danger btn-excluir">Excluir</button>

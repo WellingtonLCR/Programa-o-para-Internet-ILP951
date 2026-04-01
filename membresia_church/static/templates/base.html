@@ -1,54 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block titulo %}Painel • Igreja Viva{% endblock %}</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    </head>
 
-    <body class="bg-body-tertiary d-flex flex-column min-vh-100">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-            <div class="<div class=" container">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Painel • Igreja Viva{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
 
-            </div>">
-            <a class="navbar-brand fw-bold" href="{{ url_for('listar_usuarios') }}">Painel • Igreja Viva</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrivada">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<body class="bg-body-tertiary d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="<div class=" container">
 
-            <div class="collapse navbar-collapse" id="navbarPrivada">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"> class="nav-link" <a href="{{ url_for('listar_usuarios') }}">Usuários</a></li>
-                    <li class="nav-item"> class="nav-link" <a href="{{ url_for('listar_membros') }}"></a>Membros</li>
-                    <li class="nav-item"> class="nav-link" <a href="{{ url_for('listar_ministerios') }}">Ministérios</a></li>
-                    <li class="nav-item"> class="nav-link" <a href="{{ url_for('equipe') }}">Equipe</a></li>
-                </ul>
-                <a class="btn btn-outline-light btn-sm" href="{{ url_for('logout')}}">Logout</a>
-            </div>
-        </nav>
+        </div>">
+        <a class="navbar-brand fw-bold" href="{{ url_for('listar_usuarios') }}">Painel • Igreja Viva</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrivada">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <main class="class=" container py-4 flex-grow-1">
-            {% with messages = get_flashed_messages(with_categories=True) %}
-            {% if messages %}
-            {% for category, mensagem in messages %}
-            <div class="alert alert-{{ categoria }} alert-dismissible fade show" role="alert">
-                {{ mensagem }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-            {% endfor %}
-            {% endif %}
-            {% endwith %}
+        <div class="collapse navbar-collapse" id="navbarPrivada">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"> class="nav-link" <a href="{{ url_for('listar_usuarios') }}">Usuários</a></li>
+                <li class="nav-item"> class="nav-link" <a href="{{ url_for('listar_membros') }}"></a>Membros</li>
+                <li class="nav-item"> class="nav-link" <a href="{{ url_for('listar_ministerios') }}">Ministérios</a>
+                </li>
+                <li class="nav-item"> class="nav-link" <a href="{{ url_for('equipe') }}">Equipe</a></li>
+            </ul>
+            <a class="btn btn-outline-light btn-sm" href="{{ url_for('logout')}}">Logout</a>
+        </div>
+    </nav>
 
-            {% block conteudo %}{% endblock %}
-        </main>
+    <main class="class=" container py-4 flex-grow-1">
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+        {% for category, mensagem in messages %}
+        <div class="alert alert-{{ categoria }} alert-dismissible fade show" role="alert">
+            {{ mensagem }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
 
-        <footer class="footer-privada py-3 text-center text-white mt-auto">
-            Sistema de Membresia • Igreja Viva • T1 ILP951
-        </footer>
+        {% block conteudo %}{% endblock %}
+    </main>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    </body>
+    <footer class="footer-privada py-3 text-center text-white mt-auto">
+        Sistema de Membresia • Igreja Viva • T1 ILP951
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
 </html>

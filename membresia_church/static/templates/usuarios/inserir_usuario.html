@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block titulo %}Inserir Usuário{% endblock %}
+
+{% block conteudo %}
+<h1 class="h3 mb-3">Inserir Usuário</h1>
+<form method="post" class="card card-body shadow-sm bg-white">
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do usuário" required>
+        </div>
+        <div class="col-md-6">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="usuario@igreja.org" required>
+        </div>
+        <div class="cold-md-6">
+            <label for="perfil" class="form-label">Perfil</label>
+            <select class="form-select" id="perfil" name="perfil" required>
+                <option value="">Selecione</option>
+                <option value="lider">Secretaria</option>
+                <option value="tesouraria">Tesouraria</option>
+                <option value="pastoral">Pastoral</option>
+                <option value="comunicacao">Comunicação</option>
+            </select>
+        </div>
+    </div>
+    <div class="mt-4 d-flex gap-2">
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="{{ url_for('listar_usuarios') }}" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+{% endblock %}
