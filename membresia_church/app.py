@@ -39,12 +39,12 @@ def login_required(function): #protecao de rotas que precisam de login, se nao t
         return function(*args, **kwargs)
     return wrapper
 
-app.route("/")
+@app.route("/")
 def index():
     #pagina inicial (principal tela do sistema)
-    return render_template('index.html')
+   return render_template('index.html')
 
-app.route("/login", methods=['GET', 'POST'])
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     #pagina de login
     if request.method == 'POST':
@@ -56,8 +56,126 @@ def login():
         if not email or not senha:
             flash('Por favor, preencha o email e a senha.', 'danger')
             return redirect(url_for('login'))
-        #Guarda o email do usuario logado na sessao
-            session["usuario_logado"] = email
-            flash("Login realizado com sucesso!", "success")
+            
+    #Guarda o email do usuario logado na sessao
+    session["usuario_logado"] = email
+    flash("Login realizado com sucesso!", "success")
             
     return render_template('login.html')
+
+@app.route("/cadastro", methods=['GET', 'POST'])
+def cadastro():
+    #pagina de cadastro de usuario
+    if request.method == 'POST':
+        #logica de cadastro
+        nome = request.form.get("nome", "").strip()
+        email = request.form.get("email", "").strip()
+        senha = request.form.get("senha", "").strip()
+        confirmar_senha = request.form.get("confirma_senha", "").strip()
+        
+        #regra de validacao para bckend
+        if not nome or not email or not senha or not confirmar_senha:
+            flash('Por favor, preencha todos os campos.', 'danger')
+            return redirect(url_for('cadastro'))
+        
+        #regra de validacao para frontend
+        if senha != confirmar_senha:
+            flash('A confirmação de senha não confere.', 'danger')
+            return redirect(url_for('cadastro'))
+        
+        flash ("Cadastro realizado com sucesso! Agora realize o login para acessar o sistema.", "success")
+        
+    return render_template('cadastro.html')
+
+@app.route("/logout")
+def logout():
+    session.clear() #limpa a sessao de usuario logado
+    flash("Logout realizado com sucesso!", "info")
+    return redirect(url_for('login'))
+
+@app.route("/usuarios/listar")
+@login_required
+def listar_usuarios():
+    #Envia lista simulada para template de listagem
+    return render_template('usuarios/listar.html', usuarios=USUARIOS)
+
+@app.route(/"usuarios/inserir", methods=['GET', 'POST'])
+@login_required
+def inserir_usuario():
+    if request.method == 'POST':
+        #logica de cadastro
+        nome = request.form.get("nome", "").strip()
+        email = request.form.get("email", "").strip()
+        perfil = request.form.get("perfil", "").strip()
+        
+        #validacao obrigatoria 
+        if not nome or not email or not perfil:
+            flash('Nome, email e perfil são obrigatorios, preencha todos os campos.', 'danger')
+            return redirect(url_for('inserir_usuario'))
+        #simula a insercao e redireciona para pagina de listagem
+        flash ("Cadastro realizado com sucesso!", "success")
+        return redirect(url_for('listar_usuarios'))
+
+    return render_template('usuarios/inserir.html')
+
+@app.route("/membros/listar")
+@login_required
+def listar_membros():
+    #Renderiza a pagina de listagem de membros simulada
+    return render_template('membros/listar.html', membros=MEMBROS)
+
+@app.route("/membros/inserir", methods=['GET', 'POST'])
+@login_required
+def inserir_membro():
+    if request.method == 'POST':
+        #Dados do formulario
+        nome = request.form.get("nome", "").strip()
+        telefone = request.form.get("telefone", "").strip()
+        ministerio = request.form.get("ministerio", "").strip()
+        
+        #validacao simples sem preenchimento obrigatorio
+        if not nome or not telefone or not ministerio:
+            flash('Nome, telefone e ministerio são obrigatorios, preencha todos os campos.', 'danger')
+            return redirect(url_for('inserir_membro'))
+        
+        #simula a insercao e redireciona para pagina de listagem
+        flash ("Cadastro realizado com sucesso!", "success")
+        return redirect(url_for('listar_membros'))
+    
+    return render_template('membros/inserir.html')
+
+
+@app.route("/ministerios/listar")
+@login_required
+def listar_ministerios():
+    #Renderiza a pagina de listagem de ministerios simulada
+    return render_template('ministerios/listar.html', ministerios=MINISTERIOS)
+
+@app.route("/ministerios/inserir", methods=['GET', 'POST'])
+@login_required
+def inserir_ministerio():
+    if request.method == 'POST':
+        #Dados do formulario
+        nome = request.form.get("nome", "").strip()
+        lider = request.form.get("lider", "").strip()
+        dia_reuniao = request.form.get("dia_reuniao", "").strip()
+        
+        #validacao simples sem preenchimento obrigatorio
+        if not nome or not lider or not dia_reuniao:
+            flash('Nome, lider, dia da reuniao e vagas são obrigatorios, preencha todos os campos.', 'danger')
+            return redirect(url_for('inserir_ministerio'))
+        
+        #simula a insercao e redireciona para pagina de listagem
+        flash ("Ministério cadastrado com sucesso!", "success")
+        return redirect(url_for('listar_ministerios'))
+    
+    return render_template('ministerios/inserir.html')
+
+@app.route("/equipe", methods=['GET', 'POST'])
+def equipe():
+    #pagina livre da equipe
+    return render_template('equipe.html')
+
+if __name__ == "__main__":
+    # debug=True — permite atualizar o servidor sem precisar reinicia-lo
+    app.run(debug=True)
