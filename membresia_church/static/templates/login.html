@@ -1,0 +1,29 @@
+{% extends "base_publica.html" %}
+
+{% block titulo %}Login{% endblock %}
+
+{% block conteudo %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h2class="h4 mb-3">Acessar sistema</h2 <form method="post">
+                    <div class="mb-3">
+                        <label for="email class=" form-label">E-mail</label>
+                        <input type="email" class="form-control" id="email" name="email"
+                            placeholder="seuemail@igreja.org" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="senha class=" form-label">Senha</label>
+                        <input type="password" class="form-control" id="senha" name="senha"
+                            placeholder="Digite sua senha" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                    </form>
+                    <pclass="mt-3 mb-0 text-center">Não possui conta? <a
+                            href="{{ url_for('cadastro') }}">Cadastre-se</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
