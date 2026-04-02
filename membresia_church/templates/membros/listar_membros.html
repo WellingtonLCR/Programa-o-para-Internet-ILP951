@@ -4,11 +4,12 @@
 
 {% block conteudo %}
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h1 class="h3 mb-0">Membros</h1>
-    <a href="{{ url_for('inserir_ministerio') }}" class="btn btn-primary">Novo Membro</a>
+    <h1 class="h3 mb-0">Membros da igreja</h1>
+    <a href="{{ url_for('inserir_membro') }}" class="btn btn-primary">Novo Membro</a>
 </div>
+
 <div class="table-responsive">
-    <table class="class=" table table-hover table-bordered bg-white"">
+    <table class="table table-hover table-bordered bg-white">
         <thead class="table-dark">
             <tr>
                 <th>ID</th>
@@ -27,9 +28,10 @@
                 <td>{{ membro.telefone }}</td>
                 <td>{{ membro.ministerio }}</td>
                 <td>{{ membro.situacao }}</td>
+
                 <td>
-                    <button class="btn btn-sm btn-outline-secondary">Editar</button>
-                    <button class="btn btn-sm btn-outline-danger btn-excluir">Excluir</button>
+                    <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('editar_membro', membro_id=membro.id) }}">Editar</a>
+                    <button class="btn btn-sm btn-outline-danger">Excluir</button>
                 </td>
             </tr>
             {% endfor %}

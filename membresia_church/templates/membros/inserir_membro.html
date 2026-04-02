@@ -15,19 +15,18 @@
             <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" required>
         </div>
         <div class="col-md-6">
-            <label for="ministerio" class="form-label">Ministério</label>
+            <label for="ministerio" class="form-label">Ministerio</label>
             <select class="form-select" id="ministerio" name="ministerio" required>
-                <option value="">Selecione um Ministério</option>
-                <option>Louvor</option>
-                <option>infantil</option>
-                <option>Intercessão</option>
-                <option>Recepção</option>
-                <option>Mídia</option>
+                <option value="">Selecione um Ministerio</option>
+                {% for nome_ministerio in ministerios %}
+                <option value="{{ nome_ministerio }}">{{ nome_ministerio }}</option>
+                {% endfor %}
             </select>
         </div>
     </div>
     <div class="mt-4 d-flex gap-2">
-        <button type="submit" class="btn btn-sucess">Salvar</button>
+        <button type="submit" class="btn btn-success">Salvar</button>
         <a href="{{ url_for('listar_membros') }}" class="btn btn-secondary">Cancelar</a>
     </div>
 </form>
+{% endblock %}

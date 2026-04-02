@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block titulo %}Editar Usuario{% endblock %}
+
+{% block conteudo %}
+<h1 class="h3 mb-3">Editar Usuario</h1>
+<form method="post" class="card card-body shadow-sm bg-white">
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" value="{{ usuario.nome }}" required>
+        </div>
+        <div class="col-md-6">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ usuario.email }}" required>
+        </div>
+        <div class="col-md-6">
+            <label for="perfil" class="form-label">Perfil</label>
+            <select class="form-select" id="perfil" name="perfil" required>
+                {% for perfil in perfis %}
+                <option value="{{ perfil }}" {% if perfil == usuario.perfil %}selected{% endif %}>{{ perfil }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="status" class="form-label">Status</label>
+            <select class="form-select" id="status" name="status" required>
+                <option value="Ativo" {% if usuario.status == 'Ativo' %}selected{% endif %}>Ativo</option>
+                <option value="Inativo" {% if usuario.status == 'Inativo' %}selected{% endif %}>Inativo</option>
+            </select>
+        </div>
+    </div>
+    <div class="mt-4 d-flex gap-2">
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="{{ url_for('listar_usuarios') }}" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

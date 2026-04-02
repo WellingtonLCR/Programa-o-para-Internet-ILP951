@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block titulo %}Editar Membro{% endblock %}
+
+{% block conteudo %}
+<h1 class="h3 mb-3">Editar Membro</h1>
+<form method="post" class="card card-body shadow-sm bg-white">
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label for="nome" class="form-label">Nome completo</label>
+            <input type="text" class="form-control" id="nome" name="nome" value="{{ membro.nome }}" required>
+        </div>
+        <div class="col-md-6">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="telefone" name="telefone" value="{{ membro.telefone }}" required>
+        </div>
+        <div class="col-md-6">
+            <label for="ministerio" class="form-label">Ministerio</label>
+            <select class="form-select" id="ministerio" name="ministerio" required>
+                {% for nome_ministerio in ministerios %}
+                <option value="{{ nome_ministerio }}" {% if nome_ministerio == membro.ministerio %}selected{% endif %}>{{ nome_ministerio }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="situacao" class="form-label">Situacao</label>
+            <select class="form-select" id="situacao" name="situacao" required>
+                {% for situacao in situacoes %}
+                <option value="{{ situacao }}" {% if situacao == membro.situacao %}selected{% endif %}>{{ situacao }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="mt-4 d-flex gap-2">
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="{{ url_for('listar_membros') }}" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

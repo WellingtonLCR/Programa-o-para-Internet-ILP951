@@ -1,10 +1,17 @@
 //Confirmacao visual para Buttons de exclusao
-domcument.querySelectorAll('.btn-excluir').forEach(botao => {
+document.querySelectorAll('.btn-excluir').forEach(botao => {
     botao.addEventListener('click', (evento) => {
         const confirmou = window.confirm('Tem certeza que deseja excluir?')
         if (!confirmou) {
             evento.preventDefault();
         }
+    });
+});
+
+//Aviso temporario para botoes de editar (rota ainda nao implementada)
+document.querySelectorAll('.btn-editar').forEach(botao => {
+    botao.addEventListener('click', () => {
+        window.alert('Funcionalidade de edicao em desenvolvimento.');
     });
 });
 

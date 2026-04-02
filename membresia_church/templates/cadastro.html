@@ -29,7 +29,10 @@
                         <input type="password" class="form-control" id="confirma_senha" name="confirma_senha"
                             placeholder="Repita a senha criada" required>
                     </div>
-                    <button type="submit" class="btn btn-success w-100"">Cadastrar</button>
+                    <button type="submit" class="btn btn-success w-100">Cadastrar</button>
+                    <p class="text-center mt-3 mb-0">
+                        Ja tem cadastro? <a href="{{ url_for('login') }}">Faca login</a>
+                    </p>
                 </form>  
             </div>
         </div>

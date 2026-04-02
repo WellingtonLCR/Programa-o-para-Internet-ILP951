@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block titulo %}Inserir Ministerio{% endblock %}
+
+{% block conteudo %}
+<h1 class="h3 mb-3">Inserir Ministerio</h1>
+
+<form method="post" class="card card-body shadow-sm bg-white">
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label for="nome" class="form-label">Nome do Ministerio</label>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex: Louvor" required>
+        </div>
+        <div class="col-md-6">
+            <label for="lider" class="form-label">Lider responsavel</label>
+            <input type="text" class="form-control" id="lider" name="lider" placeholder="Digite o nome do lider" required>
+        </div>
+        <div class="col-md-6">
+            <label for="dia_reuniao" class="form-label">Dia da Reuniao</label>
+            <select class="form-select" id="dia_reuniao" name="dia_reuniao" required>
+                <option value="">Selecione</option>
+                {% for dia in dias %}
+                <option value="{{ dia }}">{{ dia }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="vagas" class="form-label">Vagas disponiveis</label>
+            <input type="number" class="form-control" id="vagas" name="vagas" placeholder="0" min="0" required>
+        </div>
+    </div>
+    <div class="mt-4 d-flex gap-2">
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="{{ url_for('listar_ministerios') }}" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

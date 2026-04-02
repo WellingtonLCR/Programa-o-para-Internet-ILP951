@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block titulo %}Ministerios{% endblock %}
+
+{% block conteudo %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Ministerios</h1>
+    <a href="{{ url_for('inserir_ministerio') }}" class="btn btn-primary">Novo Ministerio</a>
+</div>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered bg-white">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Lider</th>
+                <th>Dia de reuniao</th>
+                <th>Vagas</th>
+                <th>Acoes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ministerio in ministerios %}
+            <tr>
+                <td>{{ ministerio.id }}</td>
+                <td>{{ ministerio.nome }}</td>
+                <td>{{ ministerio.lider }}</td>
+                <td>{{ ministerio.dia_reuniao }}</td>
+                <td>{{ ministerio.vagas }}</td>
+                <td>
+                    <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('editar_ministerio', ministerio_id=ministerio.id) }}">Editar</a>
+                    <button class="btn btn-sm btn-outline-danger btn-excluir">Excluir</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

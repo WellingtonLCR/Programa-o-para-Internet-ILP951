@@ -1,27 +1,26 @@
 {% extends "base.html" %}
 
-{% block titulo %}Inserir Usuário{% endblock %}
+{% block titulo %}Inserir Usuario{% endblock %}
 
 {% block conteudo %}
-<h1 class="h3 mb-3">Inserir Usuário</h1>
+<h1 class="h3 mb-3">Inserir Usuario</h1>
 <form method="post" class="card card-body shadow-sm bg-white">
     <div class="row g-3">
         <div class="col-md-6">
             <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do usuário" required>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do usuario" required>
         </div>
         <div class="col-md-6">
             <label for="email" class="form-label">E-mail</label>
             <input type="email" class="form-control" id="email" name="email" placeholder="usuario@igreja.org" required>
         </div>
-        <div class="cold-md-6">
+        <div class="col-md-6">
             <label for="perfil" class="form-label">Perfil</label>
             <select class="form-select" id="perfil" name="perfil" required>
                 <option value="">Selecione</option>
-                <option value="lider">Secretaria</option>
-                <option value="tesouraria">Tesouraria</option>
-                <option value="pastoral">Pastoral</option>
-                <option value="comunicacao">Comunicação</option>
+                {% for perfil in perfis %}
+                <option value="{{ perfil }}">{{ perfil }}</option>
+                {% endfor %}
             </select>
         </div>
     </div>

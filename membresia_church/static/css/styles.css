@@ -4,11 +4,15 @@
 }
 
 body {
-    font font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.footer {
-    background-color: linear-gradiente(90deg, var(--cor-primaria), var(--cor-secundaria));
+.footer-publica {
+    background: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria));
+}
+
+.navbar-brand {
+    letter-spacing: 0.2px;
 }
 
 .footer-privada {
@@ -20,9 +24,18 @@ body {
 }
 
 .btn.excluir {
-    transition: transform 0.15 ease;
+    transition: transform 0.15s ease;
 }
 
 .btn.excluir:hover {
-    transform: translate(-1px);
+    transform: translateY(-1px);
+}
+
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
