@@ -167,3 +167,41 @@ Cada modulo (usuarios, membros, ministerios) segue o mesmo padrao:
 - Campos obrigatorios em formularios.
 - Conversao e validacao numerica de vagas em ministerios.
 - Mensagens de feedback ao usuario com `flash` (sucesso, erro, aviso).
+
+---
+
+## 6) Prints das telas principais
+
+As imagens estao referenciadas em `docs/screenshots/`. Se o repositorio for avaliado sem os arquivos de imagem, os prints nao aparecerao.
+
+![Tela inicial](docs/screenshots/01_home.png)
+![Login](docs/screenshots/02_login.png)
+![Cadastro](docs/screenshots/03_cadastro.png)
+![Lista de membros](docs/screenshots/04_membros.png)
+![Lista de usuarios](docs/screenshots/05_usuarios.png)
+![Lista de ministerios](docs/screenshots/06_ministerios.png)
+
+---
+
+## 7) Problemas comuns e solucoes
+
+- Erro `UnicodeDecodeError` ao abrir uma pagina:
+Verifique se os arquivos em `templates/` estao em UTF-8 sem BOM. Regrave o arquivo e reinicie o servidor.
+- Pagina em branco ou erro 500 em templates:
+Confira se o nome do template usado na rota existe e se os nomes dos arquivos estao corretos.
+- Nao consegue ativar o venv no PowerShell:
+Execute `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser` e tente novamente.
+- Dados somem ao reiniciar o servidor:
+Este projeto usa listas em memoria. Isso e esperado no modo didatico.
+
+---
+
+## 8) Checklist de entrega (avaliacao)
+
+- [ ] README atualizado com instrucoes de execucao
+- [ ] Estrutura de pastas conforme padrao Flask
+- [ ] Telas publicas e privadas funcionando
+- [ ] CRUDs de usuarios, membros e ministerios funcionando
+- [ ] Validacoes basicas com mensagens de erro
+- [ ] Estilizacao aplicada (CSS)
+- [ ] Prints das telas anexados em `docs/screenshots/`
