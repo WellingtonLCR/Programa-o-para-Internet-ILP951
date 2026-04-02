@@ -41,6 +41,11 @@ def encontrar_por_id(lista, item_id):
             return item
     return None
 
+def proximo_id(lista):
+    if not lista:
+        return 1
+    return max(item.get("id", 0) for item in lista) + 1
+
 
 def login_required(function):
     # protecao de rotas que precisam de login, se nao tiver logado redireciona para login
@@ -134,6 +139,15 @@ def inserir_usuario():
             flash("Nome, email e perfil sao obrigatorios, preencha todos os campos.", "danger")
             return redirect(url_for("inserir_usuario"))
 
+        novo = {
+            "id": proximo_id(USUARIOS),
+            "nome": nome,
+            "email": email,
+            "perfil": perfil,
+            "status": "Ativo",
+        }
+        USUARIOS.append(novo)
+
         # simula a insercao e redireciona para pagina de listagem
         flash("Cadastro realizado com sucesso!", "success")
         return redirect(url_for("listar_usuarios"))
@@ -202,6 +216,15 @@ def inserir_membro():
         if not nome or not telefone or not ministerio:
             flash("Nome, telefone e ministerio sao obrigatorios, preencha todos os campos.", "danger")
             return redirect(url_for("inserir_membro"))
+
+        novo = {
+            "id": proximo_id(MEMBROS),
+            "nome": nome,
+            "telefone": telefone,
+            "ministerio": ministerio,
+            "situacao": "Ativo",
+        }
+        MEMBROS.append(novo)
 
         # simula a insercao e redireciona para pagina de listagem
         flash("Cadastro realizado com sucesso!", "success")
@@ -285,6 +308,15 @@ def inserir_ministerio():
         except ValueError:
             flash("Vagas deve ser um numero.", "danger")
             return redirect(url_for("inserir_ministerio"))
+
+        novo = {
+            "id": proximo_id(MINISTERIOS),
+            "nome": nome,
+            "lider": lider,
+            "dia_reuniao": dia_reuniao,
+            "vagas": vagas_num,
+        }
+        MINISTERIOS.append(novo)
 
         # simula a insercao e redireciona para pagina de listagem
         flash("Ministerio cadastrado com sucesso!", "success")

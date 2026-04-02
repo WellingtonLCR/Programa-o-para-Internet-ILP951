@@ -15,7 +15,7 @@
             <input type="tel" class="form-control" id="telefone" name="telefone" value="{{ membro.telefone }}" required>
         </div>
         <div class="col-md-6">
-            <label for="ministerio" class="form-label">Ministerio</label>
+            <label for="ministerio" class="form-label">Ministério</label>
             <select class="form-select" id="ministerio" name="ministerio" required>
                 {% for nome_ministerio in ministerios %}
                 <option value="{{ nome_ministerio }}" {% if nome_ministerio == membro.ministerio %}selected{% endif %}>{{ nome_ministerio }}</option>
@@ -23,7 +23,7 @@
             </select>
         </div>
         <div class="col-md-6">
-            <label for="situacao" class="form-label">Situacao</label>
+            <label for="situacao" class="form-label">Situação</label>
             <select class="form-select" id="situacao" name="situacao" required>
                 {% for situacao in situacoes %}
                 <option value="{{ situacao }}" {% if situacao == membro.situacao %}selected{% endif %}>{{ situacao }}</option>
@@ -37,3 +37,5 @@
     </div>
 </form>
 {% endblock %}
+
+

@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 
-{% block titulo %}Inserir Ministerio{% endblock %}
+{% block titulo %}Inserir Ministério{% endblock %}
 
 {% block conteudo %}
-<h1 class="h3 mb-3">Inserir Ministerio</h1>
+<h1 class="h3 mb-3">Inserir Ministério</h1>
 
 <form method="post" class="card card-body shadow-sm bg-white">
     <div class="row g-3">
         <div class="col-md-6">
-            <label for="nome" class="form-label">Nome do Ministerio</label>
+            <label for="nome" class="form-label">Nome do Ministério</label>
             <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex: Louvor" required>
         </div>
         <div class="col-md-6">
-            <label for="lider" class="form-label">Lider responsavel</label>
+            <label for="lider" class="form-label">Líder responsável</label>
             <input type="text" class="form-control" id="lider" name="lider" placeholder="Digite o nome do lider" required>
         </div>
         <div class="col-md-6">
-            <label for="dia_reuniao" class="form-label">Dia da Reuniao</label>
+            <label for="dia_reuniao" class="form-label">Dia da Reunião</label>
             <select class="form-select" id="dia_reuniao" name="dia_reuniao" required>
                 <option value="">Selecione</option>
                 {% for dia in dias %}
@@ -25,7 +25,7 @@
             </select>
         </div>
         <div class="col-md-6">
-            <label for="vagas" class="form-label">Vagas disponiveis</label>
+            <label for="vagas" class="form-label">Vagas disponíveis</label>
             <input type="number" class="form-control" id="vagas" name="vagas" placeholder="0" min="0" required>
         </div>
     </div>
@@ -35,3 +35,5 @@
     </div>
 </form>
 {% endblock %}
+
+

@@ -3,12 +3,12 @@
 {% block titulo %}Início • Igreja Viva{% endblock %}
 
 {% block conteudo %}
-<section class="p-5 mb-4 bg-white rounded-3 shadow-sm border">
+<section class="p-5 mb-4 hero-panel shadow-sm border">
     <div class="container-fluid py-3">
         <h1 class="display-6 fw-bold">Sistema de Membresia da Igreja Viva</h1>
         <p class="col-md-10 fs-5">Uma plataforma simples para organizar membros, ministérios e usuários administrativos
             da igreja local.</p>
-        <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg me-2">Enntrar no Sistema</a>
+        <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg me-2">Entrar no Sistema</a>
         <a href="{{ url_for('cadastro') }}" class="btn btn-outline-primary btn-lg">Cadastrar-se</a>
     </div>
 </section>
@@ -43,3 +43,5 @@
     </div>
 </section>
 {% endblock %}
+
+

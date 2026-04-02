@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-{% block titulo %}Ministerios{% endblock %}
+{% block titulo %}Ministérios{% endblock %}
 
 {% block conteudo %}
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h1 class="h3 mb-0">Ministerios</h1>
-    <a href="{{ url_for('inserir_ministerio') }}" class="btn btn-primary">Novo Ministerio</a>
+    <h1 class="h3 mb-0">Ministérios</h1>
+    <a href="{{ url_for('inserir_ministerio') }}" class="btn btn-primary">Novo Ministério</a>
 </div>
 <div class="table-responsive">
     <table class="table table-hover table-bordered bg-white">
@@ -13,10 +13,10 @@
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th>Lider</th>
-                <th>Dia de reuniao</th>
+                <th>Líder</th>
+                <th>Dia de reunião</th>
                 <th>Vagas</th>
-                <th>Acoes</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -37,3 +37,5 @@
     </table>
 </div>
 {% endblock %}
+
+

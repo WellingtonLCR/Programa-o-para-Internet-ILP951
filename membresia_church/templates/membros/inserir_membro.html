@@ -15,9 +15,9 @@
             <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" required>
         </div>
         <div class="col-md-6">
-            <label for="ministerio" class="form-label">Ministerio</label>
+            <label for="ministerio" class="form-label">Ministério</label>
             <select class="form-select" id="ministerio" name="ministerio" required>
-                <option value="">Selecione um Ministerio</option>
+                <option value="">Selecione um Ministério</option>
                 {% for nome_ministerio in ministerios %}
                 <option value="{{ nome_ministerio }}">{{ nome_ministerio }}</option>
                 {% endfor %}
@@ -30,3 +30,5 @@
     </div>
 </form>
 {% endblock %}
+
+

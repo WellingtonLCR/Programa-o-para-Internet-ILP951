@@ -1,34 +1,140 @@
 :root {
-    --cor-primaria: #2453a6;
-    --cor-secundaria: #1b7f5f;
+    --cor-primaria: #21435e;
+    --cor-secundaria: #c7a35c;
+    --cor-apoio: #f5efe6;
+    --cor-escura: #1d2636;
+    --cor-clara: #ffffff;
+    --texto-escuro: #1f2328;
+    --texto-suave: #5b6770;
+    --borda-suave: rgba(33, 67, 94, 0.12);
+    --sombra-leve: 0 12px 30px rgba(29, 38, 54, 0.12);
 }
 
-body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+body.app-shell {
+    font-family: "Source Sans 3", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: radial-gradient(circle at top, #f8f4ee 0%, #f2f5f7 45%, #eef2f5 100%);
+    color: var(--texto-escuro);
 }
 
-.footer-publica {
-    background: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria));
-}
-
+h1,
+h2,
+h3,
+h4,
+h5,
 .navbar-brand {
-    letter-spacing: 0.2px;
+    font-family: "Cormorant Garamond", "Times New Roman", serif;
+    letter-spacing: 0.3px;
 }
 
-.footer-privada {
-    background-color: #1d2636;
+a {
+    color: #245a7a;
+}
+
+a:hover {
+    color: #1b435a;
+}
+
+.church-nav {
+    background: linear-gradient(110deg, #1d3b52, #245a7a 55%, #1b4b5c 100%);
+}
+
+.church-nav--dark {
+    background: linear-gradient(120deg, #1a2434, #253145 55%, #1d2636 100%);
+}
+
+.church-nav .navbar-brand,
+.church-nav .nav-link {
+    color: #f7f4ee;
+}
+
+.church-nav .nav-link:hover,
+.church-nav .nav-link:focus {
+    color: #f0d9a6;
+}
+
+.brand-logo {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    border-radius: 10px;
+    background: #ffffff;
+    padding: 4px;
+    box-shadow: 0 6px 14px rgba(18, 33, 50, 0.2);
+}
+
+.hero-panel {
+    background: linear-gradient(140deg, #ffffff, #f7f2e7 60%, #f0f4f8 100%);
+    border-color: var(--borda-suave);
 }
 
 .card {
-    border-radius: 0.9rem;
+    border-radius: 1rem;
+    border: 1px solid var(--borda-suave);
+    box-shadow: var(--sombra-leve);
 }
 
-.btn.excluir {
-    transition: transform 0.15s ease;
+.table {
+    border-color: rgba(33, 67, 94, 0.1);
 }
 
-.btn.excluir:hover {
-    transform: translateY(-1px);
+.table thead th {
+    background-color: #243b54;
+    color: #f7f4ee;
+    border-color: rgba(33, 67, 94, 0.2);
+}
+
+.btn-primary {
+    background: linear-gradient(110deg, #1f4b66, #2c6a86);
+    border: none;
+}
+
+.btn-outline-primary {
+    color: #1f4b66;
+    border-color: #1f4b66;
+}
+
+.btn-outline-primary:hover {
+    background: #1f4b66;
+    border-color: #1f4b66;
+}
+
+.btn-success {
+    background: linear-gradient(110deg, #2c7a5b, #3f8f6c);
+    border: none;
+}
+
+.btn-outline-danger {
+    border-color: #a84848;
+    color: #a84848;
+}
+
+.btn-outline-danger:hover {
+    background: #a84848;
+    border-color: #a84848;
+}
+
+.footer-publica {
+    background: linear-gradient(110deg, #1d3b52, #1b4b5c);
+}
+
+.footer-privada {
+    background: linear-gradient(110deg, #1d2636, #24344a);
+}
+
+.form-control,
+.form-select {
+    border-radius: 0.8rem;
+    border-color: rgba(33, 67, 94, 0.2);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: rgba(33, 67, 94, 0.45);
+    box-shadow: 0 0 0 0.2rem rgba(33, 67, 94, 0.15);
+}
+
+.alert {
+    border-radius: 0.8rem;
 }
 
 .profile-photo {
@@ -37,5 +143,13 @@ body {
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 16px rgba(29, 38, 54, 0.15);
+}
+
+.btn-excluir {
+    transition: transform 0.15s ease;
+}
+
+.btn-excluir:hover {
+    transform: translateY(-1px);
 }
