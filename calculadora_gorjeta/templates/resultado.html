@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Resultado • Calculadora de Gorjeta{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-9">
+      <div class="card border-0 shadow-sm">
+        <div class="card-header result-header text-white">
+          <h1 class="h4 mb-0">Resultado do cálculo</h1>
+        </div>
+        <div class="card-body p-4">
+          <div class="row g-3">
+            <div class="col-12 col-md-4">
+              <div class="p-3 bg-light rounded border h-100">
+                <div class="text-muted small">Valor da gorjeta</div>
+                <div class="fs-4 fw-bold">R$ {{ resultado.valor_gorjeta }}</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="p-3 bg-light rounded border h-100">
+                <div class="text-muted small">Total com gorjeta</div>
+                <div class="fs-4 fw-bold">R$ {{ resultado.total_com_gorjeta }}</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="p-3 bg-light rounded border h-100">
+                <div class="text-muted small">Valor por pessoa</div>
+                <div class="fs-4 fw-bold">R$ {{ resultado.valor_por_pessoa }}</div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4" />
+
+          <p class="mb-2">Classificação do pagador:</p>
+          <span class="badge rounded-pill fs-6 py-2 px-3 classif-badge {{ resultado.classe_css }}">
+            {{ resultado.classificacao }}
+          </span>
+
+          <div class="mt-4">
+            <a href="{{ url_for('index') }}" class="btn btn-outline-primary">Novo cálculo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
