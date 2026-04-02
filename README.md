@@ -172,14 +172,15 @@ Cada modulo (usuarios, membros, ministerios) segue o mesmo padrao:
 
 ## 6) Prints das telas principais
 
-As imagens estao referenciadas em `docs/screenshots/`. Se o repositorio for avaliado sem os arquivos de imagem, os prints nao aparecerao.
+As imagens estao em `membresia_church/static/imgs/`.
 
-![Tela inicial](docs/screenshots/01_home.png)
-![Login](docs/screenshots/02_login.png)
-![Cadastro](docs/screenshots/03_cadastro.png)
-![Lista de membros](docs/screenshots/04_membros.png)
-![Lista de usuarios](docs/screenshots/05_usuarios.png)
-![Lista de ministerios](docs/screenshots/06_ministerios.png)
+![Tela inicial](membresia_church/static/imgs/01_home.png)
+![Login](membresia_church/static/imgs/02_login.png)
+![Cadastro](membresia_church/static/imgs/03_cadastro.png)
+![Lista de membros](membresia_church/static/imgs/04_membros.png)
+![Lista de usuarios](membresia_church/static/imgs/05_usuarios.png)
+![Lista de ministerios](membresia_church/static/imgs/06_ministerios.png)
+![Equipe de desenvolvimento](membresia_church/static/imgs/07_equipe.png)
 
 ---
 
@@ -198,10 +199,10 @@ Este projeto usa listas em memoria. Isso e esperado no modo didatico.
 
 ## 8) Checklist de entrega (avaliacao)
 
-- [ ] README atualizado com instrucoes de execucao
-- [ ] Estrutura de pastas conforme padrao Flask
-- [ ] Telas publicas e privadas funcionando
-- [ ] CRUDs de usuarios, membros e ministerios funcionando
-- [ ] Validacoes basicas com mensagens de erro
-- [ ] Estilizacao aplicada (CSS)
-- [ ] Prints das telas anexados em `docs/screenshots/`
+- [x] README atualizado com instrucoes de execucao
+- [x] Estrutura de pastas conforme padrao Flask
+- [x] Telas publicas e privadas funcionando
+- [x] CRUDs de usuarios, membros e ministerios funcionando
+- [x] Validacoes basicas com mensagens de erro
+- [x] Estilizacao aplicada (CSS)
+- [x] Prints das telas anexados em `membresia_church/static/imgs/`
