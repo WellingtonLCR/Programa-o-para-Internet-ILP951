@@ -31,7 +31,7 @@
 
                 <td>
                     <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('editar_membro', membro_id=membro.id) }}">Editar</a>
-                    <button class="btn btn-sm btn-outline-danger">Excluir</button>
+                    <a class="btn btn-sm btn-outline-danger btn-excluir" href="{{ url_for('excluir_membro', membro_id=membro.id) }}">Excluir</a>
                 </td>
             </tr>
             {% endfor %}

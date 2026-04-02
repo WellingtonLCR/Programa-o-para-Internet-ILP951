@@ -169,6 +169,18 @@ def editar_usuario(usuario_id):
 
     return render_template("usuarios/editar_usuario.html", usuario=usuario, perfis=PERFIS_USUARIO)
 
+@app.route("/usuarios/excluir/<int:usuario_id>")
+@login_required
+def excluir_usuario(usuario_id):
+    usuario = encontrar_por_id(USUARIOS, usuario_id)
+    if not usuario:
+        flash("Usuario nao encontrado.", "danger")
+        return redirect(url_for("listar_usuarios"))
+
+    USUARIOS.remove(usuario)
+    flash("Usuario excluido com sucesso.", "success")
+    return redirect(url_for("listar_usuarios"))
+
 
 @app.route("/membros/listar")
 @login_required
@@ -232,6 +244,18 @@ def editar_membro(membro_id):
         ministerios=ministerios,
         situacoes=SITUACOES_MEMBRO,
     )
+
+@app.route("/membros/excluir/<int:membro_id>")
+@login_required
+def excluir_membro(membro_id):
+    membro = encontrar_por_id(MEMBROS, membro_id)
+    if not membro:
+        flash("Membro nao encontrado.", "danger")
+        return redirect(url_for("listar_membros"))
+
+    MEMBROS.remove(membro)
+    flash("Membro excluido com sucesso.", "success")
+    return redirect(url_for("listar_membros"))
 
 
 @app.route("/ministerios/listar")
@@ -302,6 +326,18 @@ def editar_ministerio(ministerio_id):
         return redirect(url_for("listar_ministerios"))
 
     return render_template("ministerios/editar_ministerio.html", ministerio=ministerio, dias=DIAS_REUNIAO)
+
+@app.route("/ministerios/excluir/<int:ministerio_id>")
+@login_required
+def excluir_ministerio(ministerio_id):
+    ministerio = encontrar_por_id(MINISTERIOS, ministerio_id)
+    if not ministerio:
+        flash("Ministerio nao encontrado.", "danger")
+        return redirect(url_for("listar_ministerios"))
+
+    MINISTERIOS.remove(ministerio)
+    flash("Ministerio excluido com sucesso.", "success")
+    return redirect(url_for("listar_ministerios"))
 
 
 @app.route("/equipe", methods=["GET", "POST"])

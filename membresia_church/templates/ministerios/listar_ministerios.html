@@ -29,7 +29,7 @@
                 <td>{{ ministerio.vagas }}</td>
                 <td>
                     <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('editar_ministerio', ministerio_id=ministerio.id) }}">Editar</a>
-                    <button class="btn btn-sm btn-outline-danger btn-excluir">Excluir</button>
+                    <a class="btn btn-sm btn-outline-danger btn-excluir" href="{{ url_for('excluir_ministerio', ministerio_id=ministerio.id) }}">Excluir</a>
                 </td>
             </tr>
             {% endfor %}
