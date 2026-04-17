@@ -206,3 +206,35 @@ Este projeto usa listas em memoria. Isso e esperado no modo didatico.
 - [x] Validacoes basicas com mensagens de erro
 - [x] Estilizacao aplicada (CSS)
 - [x] Prints das telas anexados em `membresia_church/static/imgs/`
+
+---
+
+## 9) ERP interno (estrutura inicial executável)
+
+Foi adicionada uma base inicial para comecar a codificacao do ERP da marmoraria com:
+
+- **Migrations SQL separadas** em `membresia_church/database/migrations/`
+  - `0001_core_security.sql`
+  - `0002_operational_core.sql`
+- **Seed de perfis/permissoes** em `membresia_church/database/seeds/0001_rbac_perfis_permissoes.sql`
+- **Esqueleto de modulos** Flask em `membresia_church/erp/modules/`
+  - `estoque.py`
+  - `requisicoes.py`
+  - `financeiro.py`
+
+### Endpoints iniciais ERP
+
+- `GET /erp/estoque/materiais`
+- `POST /erp/estoque/materiais`
+- `POST /erp/estoque/movimentacoes`
+- `GET /erp/requisicoes`
+- `POST /erp/requisicoes`
+- `POST /erp/requisicoes/<id>/aprovar`
+- `GET /erp/financeiro/contas-pagar`
+- `POST /erp/financeiro/contas-pagar`
+- `POST /erp/financeiro/contas-pagar/<id>/pagamentos`
+
+### Observacoes tecnicas
+
+- O esqueleto atual utiliza armazenamento em memoria (`membresia_church/erp/storage.py`) para acelerar o inicio do desenvolvimento.
+- A proxima etapa e conectar estes modulos ao PostgreSQL usando as migrations e seeds adicionadas.

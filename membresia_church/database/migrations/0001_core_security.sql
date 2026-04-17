@@ -1,0 +1,60 @@
+BEGIN;
+
+CREATE TABLE IF NOT EXISTS perfis (
+  id BIGSERIAL PRIMARY KEY,
+  nome VARCHAR(60) UNIQUE NOT NULL,
+  descricao TEXT,
+  ativo BOOLEAN NOT NULL DEFAULT TRUE,
+  criado_em TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS usuarios (
+  id BIGSERIAL PRIMARY KEY,
+  nome VARCHAR(120) NOT NULL,
+  email VARCHAR(120) UNIQUE NOT NULL,
+  senha_hash TEXT NOT NULL,
+  ativo BOOLEAN NOT NULL DEFAULT TRUE,
+  ultimo_login_em TIMESTAMP,
+  criado_em TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS permissoes (
+  id BIGSERIAL PRIMARY KEY,
+  modulo VARCHAR(60) NOT NULL,
+  acao VARCHAR(20) NOT NULL,
+  codigo VARCHAR(120) UNIQUE NOT NULL,
+  descricao TEXT,
+  criado_em TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS usuario_perfil (
+  usuario_id BIGINT NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
+  perfil_id BIGINT NOT NULL REFERENCES perfis(id) ON DELETE CASCADE,
+  PRIMARY KEY (usuario_id, perfil_id)
+);
+
+CREATE TABLE IF NOT EXISTS perfil_permissao (
+  perfil_id BIGINT NOT NULL REFERENCES perfis(id) ON DELETE CASCADE,
+  permissao_id BIGINT NOT NULL REFERENCES permissoes(id) ON DELETE CASCADE,
+  PRIMARY KEY (perfil_id, permissao_id)
+);
+
+CREATE TABLE IF NOT EXISTS usuario_permissao (
+  usuario_id BIGINT NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
+  permissao_id BIGINT NOT NULL REFERENCES permissoes(id) ON DELETE CASCADE,
+  permitido BOOLEAN NOT NULL DEFAULT TRUE,
+  PRIMARY KEY (usuario_id, permissao_id)
+);
+
+CREATE TABLE IF NOT EXISTS auditoria_logs (
+  id BIGSERIAL PRIMARY KEY,
+  usuario_id BIGINT REFERENCES usuarios(id),
+  modulo VARCHAR(60) NOT NULL,
+  acao VARCHAR(30) NOT NULL,
+  entidade VARCHAR(80) NOT NULL,
+  entidade_id BIGINT,
+  payload JSONB,
+  criado_em TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+COMMIT;
