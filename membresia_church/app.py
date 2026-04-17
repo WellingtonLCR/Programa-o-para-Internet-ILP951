@@ -1,9 +1,11 @@
 from functools import wraps
 from flask import Flask, render_template, request, session, redirect, url_for, flash
+from membresia_church.erp import register_erp_blueprints
 
 # criando a aplicacao flask e a chave de seguranca da sessao
 app = Flask(__name__, static_folder="static")
 app.secret_key = "chave-secreta-fatec-2026"
+register_erp_blueprints(app)
 
 # simulando BD em lista Python
 USUARIOS = [
